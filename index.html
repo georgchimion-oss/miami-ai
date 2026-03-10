@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miami AI — The Community for Builders Using AI in South Florida</title>
+    <meta name="description" content="Miami AI is the community for developers, founders, and enterprise teams building with AI in South Florida. Events, resources, and connections.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌴</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --bg: #08080A; --bg-2: #0F0F12; --bg-3: #16161B; --surface: #1C1C23;
+            --border: rgba(255,255,255,0.07); --border-hover: rgba(255,255,255,0.14);
+            --text: #EAEAEF; --text-2: rgba(255,255,255,0.52); --text-3: rgba(255,255,255,0.30);
+            --accent: #6366F1; --accent-2: #818CF8; --accent-glow: rgba(99,102,241,0.12);
+            --warm: #F0845C; --warm-2: #F7A87C; --warm-glow: rgba(240,132,92,0.10);
+            --teal: #00D2C8; --teal-glow: rgba(0,210,200,0.10);
+            --green: #10B981; --green-glow: rgba(16,185,129,0.10);
+            --coral: #FF6B6B; --coral-glow: rgba(255,107,107,0.10);
+            --r: 14px; --r-sm: 8px;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            background: var(--bg); color: var(--text);
+            font-family: 'DM Sans', -apple-system, sans-serif;
+            font-weight: 400; line-height: 1.65; overflow-x: hidden;
+        }
+        body::before {
+            content: ''; position: fixed; inset: 0; z-index: 9999; pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+        }
+        a { color: var(--accent-2); text-decoration: none; transition: color 0.2s; }
+        a:hover { color: #a5b4fc; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+
+        /* Nav */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            padding: 18px 40px; display: flex; align-items: center; justify-content: space-between;
+            border-bottom: 1px solid var(--border);
+        }
+        nav::before {
+            content: ''; position: absolute; inset: 0; z-index: -1;
+            background: rgba(8,8,10,0.88); backdrop-filter: blur(24px) saturate(1.3);
+        }
+        .nav-brand {
+            font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 17px;
+            letter-spacing: -0.02em; display: flex; align-items: center; gap: 10px;
+        }
+        .nav-brand .miami { color: var(--coral); }
+        .nav-brand .ai { color: var(--teal); }
+        .nav-links { display: flex; align-items: center; gap: 24px; }
+        .nav-links a { font-size: 13px; color: var(--text-2); }
+        .nav-links a:hover { color: var(--text); }
+        .nav-cta {
+            padding: 8px 20px; background: var(--coral); color: #0A0A0B; font-size: 13px; font-weight: 600;
+            border-radius: 8px; border: none; cursor: pointer; transition: all 0.2s;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .nav-cta:hover { background: #ff8a8a; color: #0A0A0B; transform: translateY(-1px); }
+
+        /* Hero */
+        .hero {
+            min-height: 90vh; display: flex; align-items: center; position: relative; overflow: hidden;
+            padding-top: 80px;
+        }
+        .hero-glow {
+            position: absolute; top: -100px; right: -100px; width: 800px; height: 600px;
+            background: radial-gradient(circle, rgba(255,107,107,0.10) 0%, rgba(240,132,92,0.06) 30%, rgba(0,210,200,0.04) 55%, transparent 70%);
+            pointer-events: none; filter: blur(80px); animation: glowFloat 8s ease-in-out infinite;
+        }
+        .hero-glow-2 {
+            position: absolute; bottom: -100px; left: -150px; width: 600px; height: 500px;
+            background: radial-gradient(circle, rgba(0,210,200,0.07) 0%, rgba(99,102,241,0.03) 40%, transparent 65%);
+            pointer-events: none; filter: blur(100px); animation: glowFloat 10s ease-in-out infinite reverse;
+        }
+        @keyframes glowFloat {
+            0%,100% { transform: translate(0,0) scale(1); }
+            33% { transform: translate(20px,-15px) scale(1.05); }
+            66% { transform: translate(-15px,10px) scale(0.97); }
+        }
+        .hero-content { text-align: center; position: relative; z-index: 1; }
+        .hero-eyebrow {
+            font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--teal);
+            letter-spacing: 0.06em; margin-bottom: 24px;
+        }
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+            font-size: clamp(40px, 5vw, 64px); line-height: 1.08;
+            letter-spacing: -0.04em; margin-bottom: 24px;
+        }
+        .hero h1 .miami-text {
+            background: linear-gradient(135deg, var(--coral) 0%, var(--warm) 50%, #FFD700 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .hero-sub {
+            font-size: 18px; color: var(--text-2); max-width: 560px; margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+        .hero-actions { display: flex; gap: 14px; justify-content: center; }
+        .btn-primary {
+            padding: 14px 32px; background: var(--coral); color: #0A0A0B; font-size: 15px; font-weight: 600;
+            border-radius: 10px; border: none; cursor: pointer; transition: all 0.25s;
+            font-family: 'Space Grotesk', sans-serif; display: inline-flex; align-items: center; gap: 8px;
+        }
+        .btn-primary:hover { background: #ff8a8a; color: #0A0A0B; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(255,107,107,0.2); }
+        .btn-secondary {
+            padding: 14px 24px; background: transparent; color: var(--text-2); font-size: 14px; font-weight: 500;
+            border-radius: 10px; border: 1px solid var(--border); cursor: pointer; transition: all 0.2s;
+            font-family: 'DM Sans', sans-serif;
+        }
+        .btn-secondary:hover { border-color: var(--border-hover); color: var(--text); }
+
+        /* Sections */
+        section { padding: 100px 0; }
+        .section-label {
+            font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--coral);
+            letter-spacing: 0.06em; margin-bottom: 16px; opacity: 0.8;
+        }
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+            font-size: clamp(28px, 3vw, 38px); line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 16px;
+        }
+        .section-sub { font-size: 16px; color: var(--text-2); max-width: 520px; line-height: 1.7; margin-bottom: 48px; }
+
+        /* Events */
+        .events-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .event-card {
+            background: var(--bg-2); border: 1px solid var(--border); border-radius: var(--r);
+            padding: 28px; transition: all 0.3s; position: relative; overflow: hidden;
+        }
+        .event-card:hover { border-color: var(--border-hover); transform: translateY(-2px); }
+        .event-card.featured { border-color: rgba(255,107,107,0.2); }
+        .event-card.featured::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+            background: linear-gradient(90deg, var(--coral), var(--warm));
+        }
+        .event-date {
+            font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--teal);
+            margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
+        }
+        .event-badge {
+            font-size: 10px; padding: 2px 8px; border-radius: 100px;
+            background: var(--coral-glow); color: var(--coral); border: 1px solid rgba(255,107,107,0.2);
+        }
+        .event-title {
+            font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 18px;
+            margin-bottom: 8px; letter-spacing: -0.02em;
+        }
+        .event-desc { font-size: 14px; color: var(--text-2); line-height: 1.6; margin-bottom: 14px; }
+        .event-location { font-size: 12px; color: var(--text-3); display: flex; align-items: center; gap: 6px; }
+
+        /* Community pillars */
+        .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .pillar {
+            background: var(--bg-2); border: 1px solid var(--border); border-radius: var(--r);
+            padding: 28px; text-align: center; transition: all 0.3s;
+        }
+        .pillar:hover { border-color: var(--border-hover); }
+        .pillar-icon { font-size: 32px; margin-bottom: 16px; }
+        .pillar-title {
+            font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 17px;
+            margin-bottom: 8px; letter-spacing: -0.02em;
+        }
+        .pillar-desc { font-size: 13px; color: var(--text-2); line-height: 1.6; }
+
+        /* Notify CTA */
+        .notify-section { text-align: center; padding: 120px 0; }
+        .notify-section .section-title { margin: 0 auto 16px; }
+        .notify-section .section-sub { margin: 0 auto 36px; text-align: center; }
+        .notify-form {
+            display: flex; gap: 12px; max-width: 440px; margin: 0 auto;
+        }
+        .notify-input {
+            flex: 1; padding: 16px 20px; background: var(--bg-2); border: 1px solid var(--border);
+            border-radius: 12px; color: var(--text); font-size: 15px; font-family: 'DM Sans', sans-serif;
+            outline: none; transition: border-color 0.2s;
+        }
+        .notify-input::placeholder { color: var(--text-3); }
+        .notify-input:focus { border-color: rgba(255,107,107,0.4); }
+        .notify-btn {
+            padding: 16px 28px; background: var(--coral); color: #0A0A0B; font-size: 15px; font-weight: 600;
+            border-radius: 12px; border: none; cursor: pointer; transition: all 0.25s;
+            font-family: 'Space Grotesk', sans-serif; white-space: nowrap;
+        }
+        .notify-btn:hover { background: #ff8a8a; transform: translateY(-1px); }
+
+        /* Footer */
+        footer { padding: 40px 0; border-top: 1px solid var(--border); }
+        .footer-inner {
+            display: flex; justify-content: space-between; align-items: center;
+            font-size: 13px; color: var(--text-3);
+        }
+        .footer-inner a { color: var(--text-2); }
+
+        /* Reveal */
+        .reveal {
+            opacity: 0; transform: translateY(24px);
+            transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .reveal-delay-1 { transition-delay: 0.08s; }
+        .reveal-delay-2 { transition-delay: 0.16s; }
+        .reveal-delay-3 { transition-delay: 0.24s; }
+
+        @media (max-width: 800px) {
+            .events-grid, .pillars { grid-template-columns: 1fr; }
+            .container { padding: 0 20px; }
+            nav { padding: 14px 20px; }
+            .nav-links span { display: none; }
+            .hero-actions { flex-direction: column; align-items: center; }
+            .notify-form { flex-direction: column; }
+            .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-brand"><span class="miami">Miami</span>&nbsp;<span class="ai">AI</span></div>
+    <div class="nav-links">
+        <a href="#events">Events</a>
+        <a href="#community">Community</a>
+        <a href="#notify" class="nav-cta">Get Notified</a>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-glow-2"></div>
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-eyebrow">// south florida's ai community</div>
+            <h1><span class="miami-text">Miami AI</span></h1>
+            <p class="hero-sub">The community for developers, founders, and enterprise teams building with AI in South Florida. Meetups, demos, and real connections.</p>
+            <div class="hero-actions">
+                <a href="#notify" class="btn-primary">Get Notified &#8594;</a>
+                <a href="#events" class="btn-secondary">View Events</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Events -->
+<section id="events">
+    <div class="container">
+        <div class="section-label reveal">// upcoming</div>
+        <h2 class="section-title reveal">Events</h2>
+        <p class="section-sub reveal">In-person meetups and demos in South Florida. Real builders, real conversations.</p>
+        <div class="events-grid">
+            <div class="event-card featured reveal reveal-delay-1">
+                <div class="event-date">
+                    Spring 2026 &mdash; Date TBD
+                    <span class="event-badge">Featured</span>
+                </div>
+                <div class="event-title">AI in the Enterprise</div>
+                <div class="event-desc">How teams at PwC, Deloitte, and top firms are shipping production AI — beyond the POC. Live demos, real case studies, honest conversations.</div>
+                <div class="event-location">&#128205; PwC Quarters, Wynwood &middot; Miami, FL</div>
+            </div>
+            <div class="event-card reveal reveal-delay-2">
+                <div class="event-date">Q2 2026</div>
+                <div class="event-title">Claude Code Workshop</div>
+                <div class="event-desc">Hands-on workshop: build a production automation with Claude Code in 90 minutes. Bring your laptop and a real problem to solve.</div>
+                <div class="event-location">&#128205; Miami Beach &middot; Venue TBD</div>
+            </div>
+            <div class="event-card reveal reveal-delay-1">
+                <div class="event-date">Q3 2026</div>
+                <div class="event-title">AI Demo Night</div>
+                <div class="event-desc">5-minute lightning demos from local builders. Show what you've shipped — apps, automations, agents. Audience votes on the best demo.</div>
+                <div class="event-location">&#128205; South Florida &middot; Venue TBD</div>
+            </div>
+            <div class="event-card reveal reveal-delay-2">
+                <div class="event-date">Ongoing</div>
+                <div class="event-title">Monthly Builder Meetup</div>
+                <div class="event-desc">Casual monthly gathering for AI practitioners. Share what you're building, get feedback, meet collaborators. No slides required.</div>
+                <div class="event-location">&#128205; Rotating venues &middot; Miami / Fort Lauderdale</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Community -->
+<section id="community" style="background: var(--bg-2);">
+    <div class="container">
+        <div class="section-label reveal">// what we do</div>
+        <h2 class="section-title reveal">Built for builders.</h2>
+        <p class="section-sub reveal">Not a conference. Not a sales pitch. A community of people who actually ship AI in production.</p>
+        <div class="pillars">
+            <div class="pillar reveal reveal-delay-1">
+                <div class="pillar-icon">&#127881;</div>
+                <div class="pillar-title">In-Person Events</div>
+                <div class="pillar-desc">Meetups, workshops, and demo nights across South Florida. Real conversations with real builders.</div>
+            </div>
+            <div class="pillar reveal reveal-delay-2">
+                <div class="pillar-icon">&#128640;</div>
+                <div class="pillar-title">Ship Together</div>
+                <div class="pillar-desc">Hackathons, build sessions, and collaboration on real projects. Go from idea to production with peers who get it.</div>
+            </div>
+            <div class="pillar reveal reveal-delay-3">
+                <div class="pillar-icon">&#129309;</div>
+                <div class="pillar-title">Real Connections</div>
+                <div class="pillar-desc">Connect with developers, founders, and enterprise teams who are building the future of work with AI in Miami.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Notify -->
+<section id="notify" class="notify-section">
+    <div class="container">
+        <div class="section-label reveal" style="text-align:center;">// join the community</div>
+        <h2 class="section-title reveal">Stay in the loop.</h2>
+        <p class="section-sub reveal">Get notified about upcoming events, workshops, and community updates. No spam — just signal.</p>
+        <form class="notify-form reveal" onsubmit="event.preventDefault(); this.querySelector('button').textContent='You\'re in! 🌴'; this.querySelector('input').disabled=true;">
+            <input type="email" class="notify-input" placeholder="your@email.com" required>
+            <button type="submit" class="notify-btn">Get Notified</button>
+        </form>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer-inner">
+            <span>Organized by <a href="https://georg.miami" target="_blank">Georg Chimion</a> &middot; Miami, FL</span>
+            <span>&#127796; Miami AI &middot; 2026</span>
+        </div>
+    </div>
+</footer>
+
+<script>
+    const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>
